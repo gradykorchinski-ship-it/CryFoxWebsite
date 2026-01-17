@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "vercel-build": "rm -rf .astro && astro build"
   },
   "dependencies": {
     "@vercel/node": "^4.0.0",
