@@ -1,0 +1,145 @@
+---
+import "../../styles/global.css";
+import logo from "../../images/logo.png?url";
+
+const brand = "CryFox";
+const { slug } = Astro.params;
+
+const DB = {
+  "introducing-cryfox": {
+    title: "Introducing CryFox",
+    date: "2026-01-17",
+    body: [
+      "CryFox is a browser project built around a boring idea: the browser should serve the user.",
+      "That means predictable performance, privacy defaults that make sense, and customization that doesn’t fight you.",
+      "This post is placeholder content — swap it with real launch notes when you’re ready."
+    ],
+  },
+  "privacy-by-default": {
+    title: "Privacy by default",
+    date: "2026-01-17",
+    body: [
+      "Privacy isn’t one feature — it’s a set of defaults and honest controls.",
+      "The goal: fewer silent background calls, clearer toggles, and less “trust us.”",
+      "Replace this with your real stance and settings breakdown."
+    ],
+  },
+  "performance-notes": {
+    title: "Performance notes",
+    date: "2026-01-17",
+    body: [
+      "Browsers feel fast when the UI thread stays responsive and work is prioritized correctly.",
+      "Perceived speed matters as much as benchmarks: jank kills trust.",
+      "This is a placeholder post — later you can write real profiling wins here."
+    ],
+  },
+};
+
+const post = DB[slug] ?? {
+  title: "Not found",
+  date: "",
+  body: ["This post doesn’t exist yet."],
+};
+
+export async function getStaticPaths() {
+  const slugs = [
+    "introducing-cryfox",
+    "privacy-by-default",
+    "performance-notes",
+  ];
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+---
+
+<!doctype html>
+<html lang="en" class="bg-zinc-950 text-zinc-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{brand} — {post.title}</title>
+    <meta name="description" content={`${post.title} — ${brand} blog post.`} />
+  </head>
+  <body class="min-h-screen">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-48 left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-violet-500/20 blur-3xl"></div>
+      <div class="absolute top-24 left-8 h-[420px] w-[420px] rounded-full bg-sky-500/10 blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 h-[520px] w-[520px] rounded-full bg-fuchsia-500/10 blur-3xl"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-950/70 to-zinc-950"></div>
+      <div class="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:22px_22px]"></div>
+    </div>
+
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-zinc-950/60 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href="/" class="flex items-center gap-3">
+          <img src={logo} alt="CryFox logo" class="h-7 w-7 object-contain" />
+          <div class="leading-tight">
+            <div class="font-semibold tracking-tight">{brand}</div>
+            <div class="text-xs text-zinc-400">Fast • Private • Yours</div>
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-6 text-sm md:flex">
+          <a class="text-zinc-300 hover:text-white/90" href="/features">Features</a>
+          <a class="text-zinc-300 hover:text-white/90" href="/privacy">Privacy</a>
+          <a class="text-zinc-300 hover:text-white/90" href="/support">Support</a>
+          <a class="text-white/90" href="/blog">Blog</a>
+          <a class="rounded-lg bg-violet-500 px-4 py-2 font-semibold text-zinc-950 hover:bg-violet-400" href="/download">Download</a>
+        </nav>
+
+        <button id="menuBtn" class="md:hidden rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm">Menu</button>
+      </div>
+
+      <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-zinc-950/80 backdrop-blur">
+        <div class="mx-auto max-w-6xl px-4 py-3 space-y-2 text-sm">
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="/features">Features</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="/privacy">Privacy</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="/support">Support</a>
+          <a class="block rounded-lg bg-white/5 px-3 py-2" href="/blog">Blog</a>
+          <a class="block rounded-lg bg-violet-500 px-3 py-2 font-semibold text-zinc-950 hover:bg-violet-400" href="/download">Download</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="mx-auto max-w-6xl px-4 py-14">
+        <a href="/blog" class="inline-flex items-center gap-2 text-sm text-zinc-300 hover:text-white/90">
+          ← Back to blog
+        </a>
+
+        <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-8">
+          <div class="text-xs text-zinc-500">{post.date}</div>
+          <h1 class="mt-3 text-4xl font-semibold tracking-tight">{post.title}</h1>
+
+          <div class="mt-6 space-y-4 text-zinc-300 leading-relaxed">
+            {post.body.map((p) => (
+              <p>{p}</p>
+            ))}
+          </div>
+
+          <div class="mt-10 rounded-xl border border-white/10 bg-zinc-950 p-4 text-sm text-zinc-400">
+            Tip: move this “DB” into markdown/content collections later when you want real blog authoring.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-zinc-950/60">
+      <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-zinc-400">
+        <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <div>© {new Date().getFullYear()} {brand}. Built with Astro + Tailwind.</div>
+          <div class="flex gap-4">
+            <a class="hover:text-zinc-200" href="/privacy">Privacy</a>
+            <a class="hover:text-zinc-200" href="/support">Support</a>
+            <a class="hover:text-zinc-200" href="/about">About</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn?.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+    </script>
+  </body>
+</html>

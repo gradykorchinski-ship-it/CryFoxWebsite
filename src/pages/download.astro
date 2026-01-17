@@ -1,0 +1,138 @@
+---
+import "../styles/global.css";
+import logo from "../images/logo.png?url";
+const brand = "CryFox";
+---
+
+<!doctype html>
+<html lang="en" class="bg-zinc-950 text-zinc-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{brand} — Download</title>
+    <meta name="description" content="Download CryFox for Windows, macOS, and Linux." />
+  </head>
+  <body class="min-h-screen">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-48 left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-violet-500/20 blur-3xl"></div>
+      <div class="absolute top-24 left-8 h-[420px] w-[420px] rounded-full bg-sky-500/10 blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 h-[520px] w-[520px] rounded-full bg-fuchsia-500/10 blur-3xl"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-950/70 to-zinc-950"></div>
+      <div class="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:22px_22px]"></div>
+    </div>
+
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-zinc-950/60 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href="/" class="flex items-center gap-3">
+          <img src={logo} alt="CryFox logo" class="h-7 w-7 object-contain" />
+          <div class="leading-tight">
+            <div class="font-semibold tracking-tight">{brand}</div>
+            <div class="text-xs text-zinc-400">Fast • Private • Yours</div>
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-6 text-sm md:flex">
+          <a class="text-zinc-300 hover:text-white/90" href="/features">Features</a>
+          <a class="text-zinc-300 hover:text-white/90" href="/privacy">Privacy</a>
+          <a class="text-zinc-300 hover:text-white/90" href="/support">Support</a>
+          <a class="text-zinc-300 hover:text-white/90" href="/blog">Blog</a>
+          <a class="rounded-lg bg-violet-500 px-4 py-2 font-semibold text-zinc-950 hover:bg-violet-400" href="/download">
+            Download
+          </a>
+        </nav>
+
+        <button id="menuBtn" class="md:hidden rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm">Menu</button>
+      </div>
+
+      <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-zinc-950/80 backdrop-blur">
+        <div class="mx-auto max-w-6xl px-4 py-3 space-y-2 text-sm">
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="/features">Features</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="/privacy">Privacy</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="/support">Support</a>
+          <a class="block rounded-lg px-3 py-2 hover:bg-white/5" href="/blog">Blog</a>
+          <a class="block rounded-lg bg-violet-500 px-3 py-2 font-semibold text-zinc-950 hover:bg-violet-400" href="/download">Download</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="mx-auto max-w-6xl px-4 py-14">
+        <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-200">
+          <span class="h-1.5 w-1.5 rounded-full bg-violet-400"></span>
+          Download
+        </p>
+        <h1 class="mt-5 text-4xl font-semibold tracking-tight">Get {brand}</h1>
+        <p class="mt-4 max-w-2xl text-zinc-300">
+          Placeholder downloads for now. Replace the buttons with your real GitHub Releases / CDN links later.
+        </p>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div class="text-sm font-semibold">Windows</div>
+            <p class="mt-1 text-sm text-zinc-400">Installer (.exe) + portable build.</p>
+            <div class="mt-4 flex flex-col gap-3">
+              <a class="rounded-xl bg-violet-500 px-5 py-3 text-center font-semibold text-zinc-950 hover:bg-violet-400" href="#">
+                Download .exe
+              </a>
+              <a class="rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-center font-semibold hover:bg-white/10" href="#">
+                Portable .zip
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div class="text-sm font-semibold">macOS</div>
+            <p class="mt-1 text-sm text-zinc-400">Universal app (.dmg).</p>
+            <div class="mt-4 flex flex-col gap-3">
+              <a class="rounded-xl bg-violet-500 px-5 py-3 text-center font-semibold text-zinc-950 hover:bg-violet-400" href="#">
+                Download .dmg
+              </a>
+              <p class="text-xs text-zinc-500">Apple Silicon + Intel</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div class="text-sm font-semibold">Linux</div>
+            <p class="mt-1 text-sm text-zinc-400">AppImage / tarball (placeholder).</p>
+            <div class="mt-4 flex flex-col gap-3">
+              <a class="rounded-xl bg-violet-500 px-5 py-3 text-center font-semibold text-zinc-950 hover:bg-violet-400" href="#">
+                Download AppImage
+              </a>
+              <a class="rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-center font-semibold hover:bg-white/10" href="#">
+                Download tar.gz
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="text-sm font-semibold">Checksums</div>
+          <p class="mt-1 text-sm text-zinc-400">Add SHA256 hashes here when you publish builds.</p>
+          <pre class="mt-4 overflow-auto rounded-xl border border-white/10 bg-zinc-950 p-4 text-xs text-zinc-300">
+SHA256 (CryFox-setup.exe) = ...
+SHA256 (CryFox.dmg)       = ...
+SHA256 (CryFox.AppImage)  = ...</pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-zinc-950/60">
+      <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-zinc-400">
+        <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <div>© {new Date().getFullYear()} {brand}. Built with Astro + Tailwind.</div>
+          <div class="flex gap-4">
+            <a class="hover:text-zinc-200" href="/privacy">Privacy</a>
+            <a class="hover:text-zinc-200" href="/support">Support</a>
+            <a class="hover:text-zinc-200" href="/about">About</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn?.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+    </script>
+  </body>
+</html>
