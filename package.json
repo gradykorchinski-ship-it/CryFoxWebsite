@@ -10,6 +10,7 @@
     "vercel-build": "rm -rf .astro && astro build"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.90.1",
     "@vercel/node": "^5.5.23",
     "astro": "^5.16.11"
   },
